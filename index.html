@@ -145,12 +145,12 @@
   .links a.go { background: var(--c); border-color: var(--c); color: #fff; }
   .links svg { width: 15px; height: 15px; }
 
-  /* Destaque (Haveres): lado a lado no desktop, imagem preenchendo a altura toda */
+  /* Destaque (Haveres): lado a lado no desktop. A imagem mantém a proporção 16:10
+     (sem corte) e a coluna dela é larga o bastante para acompanhar a altura do texto. */
   @media (min-width: 860px) {
-    .card.featured { flex-direction: row; min-height: 440px; }
-    .card.featured .media { order: 2; flex: 1.25; aspect-ratio: auto; margin: 12px 12px 12px 0; }
-    .card.featured .media img { object-position: left top; }
-    .card.featured .body { flex: 1; padding: 36px; justify-content: center; }
+    .card.featured { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); align-items: center; }
+    .card.featured .media { order: 2; margin: 12px 12px 12px 0; }
+    .card.featured .body { padding: 32px 36px; }
     .card.featured .links { margin-top: 4px; }
   }
 

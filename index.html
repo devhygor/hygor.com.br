@@ -145,12 +145,13 @@
   .links a.go { background: var(--c); border-color: var(--c); color: #fff; }
   .links svg { width: 15px; height: 15px; }
 
-  /* Destaque (Haveres): lado a lado no desktop. A imagem mantém a proporção 16:10
-     (sem corte) e a coluna dela é larga o bastante para acompanhar a altura do texto. */
+  /* Destaque (Haveres): lado a lado no desktop. Usa uma captura quase quadrada, então a
+     imagem preenche a altura do card e, se precisar cortar, corta só embaixo (nunca nas laterais). */
   @media (min-width: 860px) {
-    .card.featured { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); align-items: center; }
-    .card.featured .media { order: 2; margin: 12px 12px 12px 0; }
-    .card.featured .body { padding: 32px 36px; }
+    .card.featured { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+    .card.featured .media { order: 2; aspect-ratio: auto; min-height: 100%; margin: 12px 12px 12px 0; }
+    .card.featured .media img { position: absolute; inset: 0; }
+    .card.featured .body { padding: 32px 36px; justify-content: center; }
     .card.featured .links { margin-top: 4px; }
   }
 
@@ -262,7 +263,7 @@
       <div class="bento">
         <article class="card haveres featured reveal">
           <a class="media" href="https://haveres.app" target="_blank" rel="noopener" aria-label="Abrir o Haveres">
-            <img src="img/haveres.jpg" alt="Página inicial do Haveres" width="960" height="600" loading="lazy">
+            <img src="img/haveres-alta.jpg" alt="Página inicial do Haveres" width="960" height="960" loading="lazy">
             <span class="url mono">haveres.app</span>
           </a>
           <div class="body">
